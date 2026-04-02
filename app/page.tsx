@@ -221,39 +221,6 @@ export default function Page() {
     );
   };
 
-  const Section = ({
-    title,
-    subtitle,
-    children,
-  }: {
-    title: string;
-    subtitle: string;
-    children: React.ReactNode;
-  }) => (
-    <div style={sectionStyle}>
-      <div style={{ marginBottom: 16 }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>{title}</h2>
-        <p style={{ margin: '6px 0 0', color: '#64748b', fontSize: 14 }}>{subtitle}</p>
-      </div>
-      <div style={gridStyle}>{children}</div>
-    </div>
-  );
-
-  const Field = ({
-    label,
-    children,
-    fullWidth = false,
-  }: {
-    label: string;
-    children: React.ReactNode;
-    fullWidth?: boolean;
-  }) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, gridColumn: fullWidth ? '1 / -1' : undefined }}>
-      <label style={{ fontSize: 14, fontWeight: 600, color: '#334155' }}>{label}</label>
-      {children}
-    </div>
-  );
-
   return (
     <main style={pageStyle}>
       <div style={containerStyle}>
@@ -476,6 +443,43 @@ export default function Page() {
         </div>
       </div>
     </main>
+  );
+}
+
+function Section({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div style={sectionStyle}>
+      <div style={{ marginBottom: 16 }}>
+        <h2 style={{ margin: 0, fontSize: 18 }}>{title}</h2>
+        <p style={{ margin: '6px 0 0', color: '#64748b', fontSize: 14 }}>{subtitle}</p>
+      </div>
+      <div style={gridStyle}>{children}</div>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  children,
+  fullWidth = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  fullWidth?: boolean;
+}) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, gridColumn: fullWidth ? '1 / -1' : undefined }}>
+      <label style={{ fontSize: 14, fontWeight: 600, color: '#334155' }}>{label}</label>
+      {children}
+    </div>
   );
 }
 
